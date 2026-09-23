@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import { fetchItems } from '../api'
 import { ResourceState } from './ResourceState'
 
+const leaderboardEndpoint = '/api/leaderboard/'
+
 function Leaderboard() {
   const [entries, setEntries] = useState([])
   const [state, setState] = useState({ loading: true, error: '' })
 
   useEffect(() => {
-    fetchItems('leaderboard')
+    fetchItems(leaderboardEndpoint)
       .then(setEntries)
       .catch((error) => setState({ loading: false, error: error.message }))
       .finally(() => setState((current) => ({ ...current, loading: false })))

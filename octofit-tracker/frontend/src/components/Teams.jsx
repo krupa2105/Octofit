@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import { fetchItems } from '../api'
 import { ResourceState } from './ResourceState'
 
+const teamsEndpoint = '/api/teams/'
+
 function Teams() {
   const [teams, setTeams] = useState([])
   const [state, setState] = useState({ loading: true, error: '' })
 
   useEffect(() => {
-    fetchItems('teams')
+    fetchItems(teamsEndpoint)
       .then(setTeams)
       .catch((error) => setState({ loading: false, error: error.message }))
       .finally(() => setState((current) => ({ ...current, loading: false })))

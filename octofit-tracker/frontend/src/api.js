@@ -12,10 +12,12 @@ export function getItems(payload) {
   return []
 }
 
-export async function fetchItems(resource) {
-  const response = await fetch(`${apiBaseUrl}/api/${resource}/`)
+export async function fetchItems(endpoint) {
+  const response = await fetch(
+    endpoint.startsWith('/api/') ? `${apiBaseUrl}${endpoint}` : `${apiBaseUrl}/api/${endpoint}/`,
+  )
   if (!response.ok) {
-    throw new Error(`Unable to load ${resource} (${response.status})`)
+    throw new Error(`Unable to load ${endpoint} (${response.status})`)
   }
   return getItems(await response.json())
 }

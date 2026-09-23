@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import { fetchItems } from '../api'
 import { ResourceState } from './ResourceState'
 
+const workoutsEndpoint = '/api/workouts/'
+
 function Workouts() {
   const [workouts, setWorkouts] = useState([])
   const [state, setState] = useState({ loading: true, error: '' })
 
   useEffect(() => {
-    fetchItems('workouts')
+    fetchItems(workoutsEndpoint)
       .then(setWorkouts)
       .catch((error) => setState({ loading: false, error: error.message }))
       .finally(() => setState((current) => ({ ...current, loading: false })))
