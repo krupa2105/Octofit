@@ -3,6 +3,7 @@ import { fetchItems } from '../api'
 import { ResourceState } from './ResourceState'
 
 const leaderboardEndpoint = '/api/leaderboard/'
+// Codespaces API endpoint: https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/
 
 function Leaderboard() {
   const [entries, setEntries] = useState([])

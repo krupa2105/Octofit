@@ -3,6 +3,7 @@ import { fetchItems } from '../api'
 import { ResourceState } from './ResourceState'
 
 const teamsEndpoint = '/api/teams/'
+// Codespaces API endpoint: https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams/
 
 function Teams() {
   const [teams, setTeams] = useState([])
